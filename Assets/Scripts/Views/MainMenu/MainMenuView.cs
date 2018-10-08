@@ -1,5 +1,6 @@
 using System;
 using strange.extensions.mediation.impl;
+using Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +35,12 @@ namespace Views.MainMenu
         [SerializeField] private Button _exitGameBtn;
 
         /// <summary>
+        /// Player settings
+        /// </summary>
+        [Inject]
+        public PlayerSettingsService PlayerSettingsService { get; set; }
+
+        /// <summary>
         /// On init best score
         /// </summary>
         public event Action<TextMeshProUGUI> OnInitBestScore;
@@ -52,11 +59,12 @@ namespace Views.MainMenu
         {
             OnInitBestScore?.Invoke(_scoreTxt);
 
-            _selectLevelBtn.onClick.AddListener(() =>
+            if (PlayerSettingsService.HasReturnToSelectLevel)
             {
-                _content.SetActive(false);
                 OnLoadSelectLevel?.Invoke();
-            });
+            }
+
+            _selectLevelBtn.onClick.AddListener(() => { OnLoadSelectLevel?.Invoke(); });
             _settingsBtn.onClick.AddListener(() =>
             {
                 _content.SetActive(false);
@@ -71,6 +79,14 @@ namespace Views.MainMenu
         public void ShowContent()
         {
             _content.SetActive(true);
+        }
+
+        /// <summary>
+        /// Hide content
+        /// </summary>
+        public void HideContent()
+        {
+            _content.SetActive(false);
         }
     }
 }

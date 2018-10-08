@@ -57,8 +57,9 @@ namespace Contexts
         protected override void mapBindings()
         {
             // init Signals
-            injectionBinder.Bind<OnLoadSelectLevelSignal>().ToSingleton();
             injectionBinder.Bind<OnLoadSettingsSignal>().ToSingleton();
+            injectionBinder.Bind<OnLoadMainMenuSignal>().ToSingleton();
+            injectionBinder.Bind<OnLoadSelectLevelSignal>().ToSingleton();
 
             // Init commands
 
@@ -67,6 +68,7 @@ namespace Contexts
 
             // Init mediators
             mediationBinder.Bind<MainMenuView>().To<MainMenuMediator>();
+            mediationBinder.Bind<SelectLevelView>().To<SelectLevelMediator>();
         }
     }
 }

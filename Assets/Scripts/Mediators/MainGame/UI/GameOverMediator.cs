@@ -1,6 +1,6 @@
 using Services;
-using Signals;
 using Signals.MainGame;
+using UnityEngine.SceneManagement;
 using Views.MainGame.UI;
 
 namespace Mediators.MainGame.UI
@@ -20,10 +20,23 @@ namespace Mediators.MainGame.UI
         public PlayerStartsService PlayerStartsService { get; set; }
 
         /// <summary>
+        /// Player settings
+        /// </summary>
+        [Inject]
+        public PlayerSettingsService PlayerSettingsService { get; set; }
+
+        /// <summary>
         /// On register mediator
         /// </summary>
         public override void OnRegister()
         {
+            View.OnLoadSelectLevel += () =>
+            {
+                PlayerSettingsService.SaveBestScore(PlayerStartsService.Score);
+                PlayerSettingsService.HasReturnToSelectLevel = true;
+                SceneManager.LoadSceneAsync("MainMenu");
+            };
+
             GameOverSignal.AddListener(() => { View.ShowGameOver(PlayerStartsService.Score); });
         }
     }

@@ -1,4 +1,5 @@
-﻿using strange.extensions.mediation.impl;
+﻿using System;
+using strange.extensions.mediation.impl;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -14,17 +15,34 @@ namespace Views.MainGame.UI
         [SerializeField] private GameObject _gameOverContent;
 
         /// <summary>
-        /// Game over content
+        /// Retry button
         /// </summary>
         [SerializeField] private Button _retryBtn;
+
+        /// <summary>
+        /// Load menu btn
+        /// </summary>
+        [SerializeField] private Button _menuBtn;
 
         /// <summary>
         /// Score txt
         /// </summary>
         [SerializeField] private TextMeshProUGUI _scoreTxt;
+        
+        /// <summary>
+        /// On load select level
+        /// </summary>
+        public event Action OnLoadSelectLevel;
 
         protected override void Start()
         {
+            _menuBtn.onClick.AddListener(() =>
+            {
+                // Pause time
+                Time.timeScale = 1;
+                OnLoadSelectLevel?.Invoke();
+            });
+
             _retryBtn.onClick.AddListener(() =>
             {
                 // Pause time

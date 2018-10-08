@@ -3,6 +3,7 @@ using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
 using Services;
+using Signals.MainMenu;
 using UnityEngine;
 
 namespace Contexts
@@ -54,7 +55,8 @@ namespace Contexts
         protected override void mapBindings()
         {
             // init Signals
-
+       
+                ;
             // Init commands
 
             // Init services
