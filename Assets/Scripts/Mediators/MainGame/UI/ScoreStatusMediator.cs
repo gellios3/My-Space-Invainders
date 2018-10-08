@@ -1,8 +1,9 @@
 using Services;
 using Signals;
-using Views.UI;
+using Signals.MainGame;
+using Views.MainGame.UI;
 
-namespace Mediators.UI
+namespace Mediators.MainGame.UI
 {
     public class ScoreStatusMediator : TargetMediator<ScoreStatusView>
     {

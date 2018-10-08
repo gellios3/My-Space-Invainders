@@ -1,7 +1,7 @@
 using strange.extensions.signal.impl;
 using Views.MainGame;
 
-namespace Signals
+namespace Signals.MainGame
 {
     public class OnEnemyDeathSignal : Signal<EnemyView>
     {

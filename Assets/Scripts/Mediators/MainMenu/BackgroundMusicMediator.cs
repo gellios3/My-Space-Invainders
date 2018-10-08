@@ -1,6 +1,6 @@
 using Views.UI;
 
-namespace Mediators.UI
+namespace Mediators.MainMenu
 {
     public class BackgroundMusicMediator : TargetMediator<BackgroundMusicView>
     {

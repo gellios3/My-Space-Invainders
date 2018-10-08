@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Views.UI
+namespace Views.MainGame.UI
 {
     public class PauseMenuView : EventView
     {
@@ -54,6 +54,8 @@ namespace Views.UI
         {
             if (!Input.GetKeyDown(KeyCode.P) && !Input.GetKeyDown(KeyCode.Escape))
                 return;
+            if (PlayerStartsService.HasGameOver) 
+                return;
             if (!PlayerStartsService.HasPaused)
             {
                 ShowPauseMenu();
@@ -79,7 +81,7 @@ namespace Views.UI
         /// Show game over content
         /// </summary>
         private void ShowPauseMenu()
-        {
+        {           
             PlayerStartsService.HasPaused = true;
             _pauseMenuContent.SetActive(true);
             // Pause time

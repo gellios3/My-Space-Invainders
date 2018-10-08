@@ -1,6 +1,6 @@
 using strange.extensions.signal.impl;
 
-namespace Signals
+namespace Signals.MainGame
 {
     public class CompleteLevelSignal: Signal
     {

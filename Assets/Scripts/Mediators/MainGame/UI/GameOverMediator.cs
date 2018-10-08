@@ -1,16 +1,17 @@
 using Services;
 using Signals;
-using Views.UI;
+using Signals.MainGame;
+using Views.MainGame.UI;
 
-namespace Mediators.UI
+namespace Mediators.MainGame.UI
 {
-    public class CompleteLevelMediator : TargetMediator<CompleteLevelView>
+    public class GameOverMediator : TargetMediator<GameOverView>
     {
         /// <summary>
         /// Game over signal
         /// </summary>
         [Inject]
-        public CompleteLevelSignal CompleteLevelSignal { get; set; }
+        public GameOverSignal GameOverSignal { get; set; }
 
         /// <summary>
         /// Player starts service
@@ -23,7 +24,7 @@ namespace Mediators.UI
         /// </summary>
         public override void OnRegister()
         {
-            CompleteLevelSignal.AddListener(() => { View.ShowDialog(PlayerStartsService.Score); });
+            GameOverSignal.AddListener(() => { View.ShowGameOver(PlayerStartsService.Score); });
         }
     }
 }

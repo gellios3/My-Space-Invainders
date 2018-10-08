@@ -4,9 +4,6 @@ namespace Views.UI
 {
     public class BackgroundMusicView : EventView
     {
-        protected override void Start()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+        
     }
 }

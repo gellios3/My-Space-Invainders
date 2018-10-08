@@ -1,11 +1,14 @@
 ﻿using System;
 using strange.extensions.mediation.impl;
+using Services;
 using UnityEngine;
 
 namespace Views.MainGame
 {
     public class PlayerView : EventView
     {
+        [SerializeField] private MeshRenderer _meshRenderer;
+        [SerializeField] private ShipColorMaterial[] _materials;
         [SerializeField] private Rigidbody _rigidBody;
         [SerializeField] private float _speed;
         [SerializeField] private float _tilt;
@@ -27,6 +30,15 @@ namespace Views.MainGame
         /// </summary>
         public event Action<Collider> OnDeathPlayer;
 
+        /// <summary>
+        /// On init material
+        /// </summary>
+        public event Action<MeshRenderer, ShipColorMaterial[]> OnInitMaterial;
+
+        protected override void Start()
+        {
+            OnInitMaterial?.Invoke(_meshRenderer, _materials);
+        }
 
         private void Update()
         {

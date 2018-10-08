@@ -12,5 +12,10 @@ namespace Services
         /// Has paused
         /// </summary>
         public bool HasPaused { get; set; }
+        
+        /// <summary>
+        /// Has game over
+        /// </summary>
+        public bool HasGameOver { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 using strange.extensions.command.impl;
 using Services;
 using Signals;
+using Signals.MainGame;
 using UnityEngine;
 using Views.MainGame;
 

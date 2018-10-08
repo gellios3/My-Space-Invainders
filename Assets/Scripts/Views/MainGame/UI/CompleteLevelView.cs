@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Views.UI
+namespace Views.MainGame.UI
 {
     public class CompleteLevelView : EventView
     {

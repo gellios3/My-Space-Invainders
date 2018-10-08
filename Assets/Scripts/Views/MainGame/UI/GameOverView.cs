@@ -1,11 +1,10 @@
 ﻿using strange.extensions.mediation.impl;
-using Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Views.UI
+namespace Views.MainGame.UI
 {
     public class GameOverView : EventView
     {
@@ -26,7 +25,12 @@ namespace Views.UI
 
         protected override void Start()
         {
-            _retryBtn.onClick.AddListener(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); });
+            _retryBtn.onClick.AddListener(() =>
+            {
+                // Pause time
+                Time.timeScale = 1;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            });
         }
 
         /// <summary>
@@ -36,6 +40,8 @@ namespace Views.UI
         {
             _scoreTxt.text = score.ToString();
             _gameOverContent.SetActive(true);
+            // Pause time
+            Time.timeScale = 0;
         }
     }
 }

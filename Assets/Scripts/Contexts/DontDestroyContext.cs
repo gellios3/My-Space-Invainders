@@ -1,28 +1,25 @@
-using Mediators.MainMenu;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
 using Services;
-using Signals.MainMenu;
 using UnityEngine;
-using Views.MainMenu;
 
 namespace Contexts
 {
-    public class MenuContext : MVCSContext
+    public class DontDestroyContext : MVCSContext
     {
-        public MenuContext(MonoBehaviour view) : base(view)
+        public DontDestroyContext(MonoBehaviour view) : base(view)
         {
             _instance = this;
         }
 
-        public MenuContext(MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
+        public DontDestroyContext(MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
         {
             _instance = this;
         }
 
-        private static MenuContext _instance;
+        private static DontDestroyContext _instance;
 
         public static T Get<T>()
         {
@@ -57,16 +54,13 @@ namespace Contexts
         protected override void mapBindings()
         {
             // init Signals
-            injectionBinder.Bind<OnLoadSelectLevelSignal>().ToSingleton();
-            injectionBinder.Bind<OnLoadSettingsSignal>().ToSingleton();
 
             // Init commands
 
             // Init services
-
+            injectionBinder.Bind<PlayerSettingsService>().ToSingleton().CrossContext();
 
             // Init mediators
-            mediationBinder.Bind<MainMenuView>().To<MainMenuMediator>();
         }
     }
 }

@@ -169,7 +169,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 8940b037a9b441c4cbd3d2b446838424, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: f36c72c738c55f741afcd674a0b1245f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -303,6 +303,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054c19cd9824a4257a98a59874c988f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meshRenderer: {fileID: 2300000}
+  _materials:
+  - Color: 0
+    Material: {fileID: 2100000, guid: 50c26a3d4bb8bb3468b1ec0406e9ae70, type: 2}
+  - Color: 1
+    Material: {fileID: 2100000, guid: 369eec9b2db534349bf27fc5878972b9, type: 2}
+  - Color: 2
+    Material: {fileID: 2100000, guid: 0aa8e2cbaeccffd41b2d0758218c12f7, type: 2}
+  - Color: 3
+    Material: {fileID: 2100000, guid: 8940b037a9b441c4cbd3d2b446838424, type: 2}
   _rigidBody: {fileID: 54164652685271670}
   _speed: 10
   _tilt: 5

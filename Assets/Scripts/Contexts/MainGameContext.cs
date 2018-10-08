@@ -1,14 +1,16 @@
 ﻿using Commands;
 using Mediators.MainGame;
-using Mediators.UI;
+using Mediators.MainGame.UI;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
 using Services;
 using Signals;
+using Signals.MainGame;
 using UnityEngine;
 using Views.MainGame;
+using Views.MainGame.UI;
 using Views.UI;
 
 namespace Contexts
@@ -74,6 +76,7 @@ namespace Contexts
             // Init mediators
             mediationBinder.Bind<EnemyView>().To<EnemyMediator>();
             mediationBinder.Bind<PlayerView>().To<PlayerMediator>();
+            mediationBinder.Bind<ExplosionView>().To<ExplosionMediator>();
             mediationBinder.Bind<EnemiesWaveView>().To<EnemiesWaveMediator>();
             mediationBinder.Bind<GameOverView>().To<GameOverMediator>();
             mediationBinder.Bind<CompleteLevelView>().To<CompleteLevelMediator>();

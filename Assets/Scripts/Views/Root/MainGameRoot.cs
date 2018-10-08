@@ -12,12 +12,6 @@ namespace Views.Root
             context = new MainGameContext(this);
         }
         
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
-        }
+       
     }
 }

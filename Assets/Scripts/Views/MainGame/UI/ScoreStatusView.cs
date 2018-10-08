@@ -2,7 +2,7 @@ using strange.extensions.mediation.impl;
 using TMPro;
 using UnityEngine;
 
-namespace Views.UI
+namespace Views.MainGame.UI
 {
     public class ScoreStatusView : EventView
     {

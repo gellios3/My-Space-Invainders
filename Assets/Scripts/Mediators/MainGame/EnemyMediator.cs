@@ -1,5 +1,6 @@
 using Services;
 using Signals;
+using Signals.MainGame;
 using Views.MainGame;
 
 namespace Mediators.MainGame
