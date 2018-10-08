@@ -1,3 +1,4 @@
+using System;
 using strange.extensions.mediation.impl;
 using TMPro;
 using UnityEngine;
@@ -11,23 +12,32 @@ namespace Views.MainGame.UI
         /// Content
         /// </summary>
         [SerializeField] private GameObject _content;
-        
+
         /// <summary>
         /// Score txt
         /// </summary>
         [SerializeField] private TextMeshProUGUI _scoreTxt;
-        
+
         /// <summary>
         /// Game over content
         /// </summary>
         [SerializeField] private Button _menuBtn;
-        
+
+        /// <summary>
+        /// On load select level
+        /// </summary>
+        public event Action OnLoadSelectLevel;
+
         protected override void Start()
         {
-            _menuBtn.onClick.AddListener(() => { Debug.LogWarning("LOAD MENU"); });
+            _menuBtn.onClick.AddListener(() =>
+            {
+                Time.timeScale = 1;
+                OnLoadSelectLevel?.Invoke();
+            });
         }
-        
-        
+
+
         /// <summary>
         /// Show game over content
         /// </summary>

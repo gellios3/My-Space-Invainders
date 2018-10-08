@@ -36,7 +36,7 @@ namespace Views.MainMenu
         {
             for (var i = 0; i < _currentLevelBtn.Length; i++)
             {
-                var levelNum = i + 1;
+                var levelNum = i;
                 _currentLevelBtn[i].onClick.AddListener(() => OnLoadMainGame?.Invoke(levelNum));
             }
 
