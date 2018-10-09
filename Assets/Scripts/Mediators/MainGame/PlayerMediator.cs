@@ -1,5 +1,6 @@
 using System.Linq;
 using Services;
+using UnityEngine;
 using Views.MainGame;
 
 namespace Mediators.MainGame
@@ -13,14 +14,20 @@ namespace Mediators.MainGame
         public PlayerStartsService PlayerStartsService { get; set; }
 
         /// <summary>
+        /// Player settings service
+        /// </summary>
+        [Inject]
+        public PlayerSettingsService PlayerSettingsService { get; set; }
+
+        /// <summary>
         /// On register mediator
         /// </summary>
         public override void OnRegister()
         {
             View.OnInitMaterial += (meshRenderer, materials) =>
             {
-                meshRenderer.material =
-                    materials.FirstOrDefault(material => material.Color == ShipColor.Blue).Material;
+                var shipColor = PlayerSettingsService.InitShipColor();
+                meshRenderer.material = materials.FirstOrDefault(material => material.Color == shipColor).Material;
             };
 
             View.OnDeathPlayer += other =>

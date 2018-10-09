@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Services
 {
@@ -8,7 +9,7 @@ namespace Services
         /// <summary>
         /// Ship color
         /// </summary>
-        public ShipColor ShipColor { get; private set; } = ShipColor.Gray;
+        public ShipColor ShipColor { get; private set; }
 
         /// <summary>
         /// Best score
@@ -19,7 +20,12 @@ namespace Services
         /// Best score
         /// </summary>
         public int CurrentLevel { get; private set; }
-        
+
+        /// <summary>
+        /// Best score
+        /// </summary>
+        public float Volume { get; private set; }
+
         /// <summary>
         /// Has return to menu
         /// </summary>
@@ -47,6 +53,26 @@ namespace Services
         }
 
         /// <summary>
+        /// Update volume
+        /// </summary>
+        /// <returns></returns>
+        public void UpdateVolume(float volume)
+        {
+            Volume = volume;
+            PlayerPrefs.SetFloat("userVolume", Volume);
+        }
+
+        /// <summary>
+        /// Init volume
+        /// </summary>
+        /// <returns></returns>
+        public float InitVolume()
+        {
+            Volume = PlayerPrefs.GetFloat("userVolume", 1);
+            return Volume;
+        }
+
+        /// <summary>
         /// Init best score
         /// </summary>
         /// <returns></returns>
@@ -54,6 +80,16 @@ namespace Services
         {
             BestScore = PlayerPrefs.GetInt("bestScore", 0);
             return BestScore;
+        }
+
+        /// <summary>
+        /// Init ship color
+        /// </summary>
+        /// <returns></returns>
+        public ShipColor InitShipColor()
+        {
+            ShipColor = (ShipColor) PlayerPrefs.GetInt("shipColor", (int) ShipColor.Gray);
+            return ShipColor;
         }
 
         /// <summary>
@@ -72,6 +108,13 @@ namespace Services
     {
         public ShipColor Color;
         public Material Material;
+    }
+
+    [Serializable]
+    public struct ShipColorButton
+    {
+        public ShipColor Color;
+        public Button Button;
     }
 
     public enum ShipColor

@@ -1,3 +1,4 @@
+using Mediators.MainMenu;
 using strange.extensions.command.api;
 using strange.extensions.command.impl;
 using strange.extensions.context.api;
@@ -5,6 +6,8 @@ using strange.extensions.context.impl;
 using Services;
 using Signals.MainMenu;
 using UnityEngine;
+using Views.MainGame;
+using Views.MainMenu;
 
 namespace Contexts
 {
@@ -55,14 +58,14 @@ namespace Contexts
         protected override void mapBindings()
         {
             // init Signals
-       
-                ;
+            injectionBinder.Bind<OnChangeVolumeSignal>().ToSingleton().CrossContext();
             // Init commands
 
             // Init services
             injectionBinder.Bind<PlayerSettingsService>().ToSingleton().CrossContext();
 
             // Init mediators
+            mediationBinder.Bind<BackgroundMusicView>().To<BackgroundMusicMediator>();
         }
     }
 }

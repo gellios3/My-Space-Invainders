@@ -69,6 +69,8 @@ namespace Contexts
             // Init mediators
             mediationBinder.Bind<MainMenuView>().To<MainMenuMediator>();
             mediationBinder.Bind<SelectLevelView>().To<SelectLevelMediator>();
+            mediationBinder.Bind<SettingsView>().To<SettingsMediator>();
+            
         }
     }
 }

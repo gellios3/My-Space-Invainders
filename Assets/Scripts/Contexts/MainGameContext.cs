@@ -11,7 +11,6 @@ using Signals.MainGame;
 using UnityEngine;
 using Views.MainGame;
 using Views.MainGame.UI;
-using Views.UI;
 
 namespace Contexts
 {

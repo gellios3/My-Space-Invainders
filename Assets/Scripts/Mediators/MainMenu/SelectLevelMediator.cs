@@ -19,7 +19,6 @@ namespace Mediators.MainMenu
         [Inject]
         public OnLoadMainMenuSignal OnLoadMainMenuSignal { get; set; }
 
-
         /// <summary>
         /// Player settings service
         /// </summary>
